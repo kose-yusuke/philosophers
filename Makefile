@@ -1,9 +1,9 @@
 NAME		= philo
-SRCS		= main.c
+SRCS		= main.c utils.c thread.c routine.c destroy.c monitor.c
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -pthread
+CFLAGS		= -Wall -Wextra -Werror -pthread -g -fsanitize=address
+# CFLAGS		= -Wall -Wextra -Werror -pthread -g -fsanitize=thread
 OBJS		= $(SRCS:.c=.o)
-OBJS_DIR	= objs
 INCLUDES	= -I includes
 
 all: $(NAME)
