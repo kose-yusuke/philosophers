@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koseki.yusuke <koseki.yusuke@student.42    +#+  +:+       +#+        */
+/*   By: ykoseki <ykoseki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:30:26 by koseki.yusu       #+#    #+#             */
-/*   Updated: 2024/07/29 12:24:38 by koseki.yusu      ###   ########.fr       */
+/*   Updated: 2024/07/30 19:14:46 by ykoseki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ size_t	get_current_time(void)
 
 int	ft_usleep(size_t milliseconds)
 {
-	size_t start;
+	size_t	start;
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)

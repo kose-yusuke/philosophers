@@ -3,94 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koseki.yusuke <koseki.yusuke@student.42    +#+  +:+       +#+        */
+/*   By: ykoseki <ykoseki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:28:12 by koseki.yusu       #+#    #+#             */
-/*   Updated: 2024/07/29 12:32:10 by koseki.yusu      ###   ########.fr       */
+/*   Updated: 2024/07/30 21:50:38 by ykoseki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// void print_init(t_philo *philo, t_args *args)
-// {
-//     printf("Arguments:\n");
-//     printf("Number of philosophers: %d\n", args->num_of_philos);
-//     printf("Time to die: %zu\n", args->time_to_die);
-//     printf("Time to eat: %zu\n", args->time_to_eat);
-//     printf("Time to sleep: %zu\n", args->time_to_sleep);
-//     printf("Number of times to eat: %d\n", args->num_times_to_eat);
-
-//     printf("\nPhilosophers:\n");
-//     for (int i = 0; i < args->num_of_philos; i++)
-//     {
-//         printf("Philosopher %d:\n", philo[i].id);
-//         printf("ID: %d\n", philo[i].id);
-//         printf("Args pointer: %p\n", (void*)philo[i].args);
-//         printf("Fork mutex pointer: %p\n", (void*)&philo[i].fork);
-//     }
-// }
-
-#include <libc.h>
+// #include <libc.h>
 
 // __attribute__((destructor)) static void destructor()
 // {
 // 	system("leaks -q philo");
 // }
-
-int	check_digit(char *argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i] != '\0')
-	{
-		if (argv[i] < '0' || argv[i] > '9')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	arg_check(int argc, char **argv)
-{
-	if (argc != 5 && argc != 6)
-	{
-		printf("wrong argument number\n");
-		return (0);
-	}
-	if (ft_atoi(argv[1]) > 200 || ft_atoi(argv[1]) < 1 || check_digit(argv[1]))
-	{
-		printf("wrong philosophers number\n");
-		return (0);
-	}
-	if (ft_atoi(argv[2]) < 1 || check_digit(argv[2]))
-	{
-		printf("wrong time to die\n");
-		return (0);
-	}
-	return (1);
-}
-
-int	arg_check2(char **argv)
-{
-	if (ft_atoi(argv[3]) < 1 || check_digit(argv[3]))
-	{
-		printf("wrong time to eat\n");
-		return (0);
-	}
-	if (ft_atoi(argv[4]) < 1 || check_digit(argv[4]))
-	{
-		printf("wrong time to sleep\n");
-		return (0);
-	}
-	if (argv[5] && (ft_atoi(argv[5]) < 1 || check_digit(argv[5])))
-	{
-		printf("wrong num_times_to_eat\n");
-		return (0);
-	}
-	return (1);
-}
 
 void	ft_parse_args(t_args *args, char **argv)
 {
@@ -106,8 +32,6 @@ void	ft_parse_args(t_args *args, char **argv)
 	args->dead_flag = 0;
 	pthread_mutex_init(&args->eat_lock, NULL);
 	pthread_mutex_init(&args->dead_lock, NULL);
-	pthread_mutex_init(&args->stop_lock, NULL);
-	pthread_mutex_init(&args->all_eat_lock, NULL);
 	pthread_mutex_init(&args->printf_lock, NULL);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: koseki.yusuke <koseki.yusuke@student.42    +#+  +:+       +#+        */
+/*   By: ykoseki <ykoseki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:27:05 by koseki.yusu       #+#    #+#             */
-/*   Updated: 2024/07/29 12:25:00 by koseki.yusu      ###   ########.fr       */
+/*   Updated: 2024/07/30 21:45:57 by ykoseki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ typedef struct s_args
 	int				dead_flag;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	eat_lock;
-	pthread_mutex_t	stop_lock;
-	pthread_mutex_t	all_eat_lock;
 	pthread_mutex_t	printf_lock;
 }					t_args;
 
@@ -58,5 +56,13 @@ int					ft_usleep(size_t milliseconds);
 void				*monitor_routine(void *arg);
 void				died(t_philo *philo);
 bool				check_stop(t_philo *philo);
+int					arg_check(int argc, char **argv);
+int					arg_check2(char **argv);
+void				taken_fork(t_philo *philo);
+void				eat(t_philo *philo);
+void				sleeping(t_philo *philo);
+void				think(t_philo *philo);
+void				died(t_philo *philo);
+void				printf_wrapper(t_philo *philo, char *output);
 
 #endif
